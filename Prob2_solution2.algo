@@ -1,0 +1,34 @@
+ALGORITHM Sum_of_overlapping_elements_Solution2
+VAR
+    set1:INTEGER[4]:=[12,13,6,10];
+    set2:INTEGER[4]:=[13,10,16,15];
+    hash: HASH_TABLE<INTEGER,INTEGER>;
+    i,j:INTEGER;
+    sum:INTEGER;
+BEGIN
+    // fill HASH_TABLE
+FOR i FROM 0 TO set1.length-1 STEP 1  DO
+    hash.insert(set1[i],1);
+END_FOR
+ i:=0;
+
+FOR i FROM 0 TO set2.length-1 STEP 1  DO
+IF (hash.lookup(set2[i])=true) THEN    //if set2[i] exist 
+    hash.insert(set2[i],2);            // this instruction will delete the first value (set1[i],1),
+                                      // and replace it the second (set2[i],2).
+ELSE
+    hash.insert(set2[i],1);
+END_IF
+END_FOR
+
+// Sum of the overlapping elements
+
+ sum:=0;
+FOR j FROM 0 TO set1.length STEP 1  DO
+    IF (hash.get(set1[j])=2) THEN
+        sum:=sum+(set1[j]*2);
+    END_IF
+END_FOR
+ write("Sum of overlapping elements= ");
+ write(sum);
+END
