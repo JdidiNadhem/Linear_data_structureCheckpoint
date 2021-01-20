@@ -12,7 +12,7 @@ BEGIN
    FOR i FROM 0 TO set1.length-1 STEP 1  DO
    verif:=false;
        FOR j FROM 0 TO set2.length-1 STEP 1  DO
-           IF (set1[i]=set2[i]) THEN
+           IF (set1[i]=set2[j]) THEN
             verif:=true; 
            END_IF
        END_FOR
@@ -27,7 +27,7 @@ BEGIN
    FOR i FROM 0 TO set2.length-1 STEP 1  DO
    verif:=false;
        FOR j FROM 0 TO set1.length-1 STEP 1  DO
-           IF (set2[i]=set1[i]) THEN
+           IF (set2[i]=set1[j]) THEN
             verif:=true; 
            END_IF
        END_FOR
